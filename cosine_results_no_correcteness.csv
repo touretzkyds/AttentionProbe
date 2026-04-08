@@ -1,0 +1,9 @@
+row_index,sentence,is_correct,cos_his_man,cos_his_woman,cos_her_man,cos_her_woman
+17,The man showed the woman her jacket. Who is the owner of the jacket?,True,,,0.16705003380775452,0.1899317353963852
+18,The woman showed the man his jacket. Who is the owner of the jacket?,True,0.24254176020622253,0.13083148002624512,,
+19,The woman showed the man her jacket. Who is the owner of the jacket?,True,,,0.11502185463905334,0.3041485548019409
+20,The man showed the woman his jacket. Whose jacket was it? ,True,0.3839123249053955,0.08380437642335892,,
+27,The woman showed the man her jacket. To whom did the jacket belong?,True,,,0.14454768598079681,0.3550618290901184
+28,The man was shown his jacket by a woman. Was the jacket the man's or the woman's?,True,0.28528594970703125,0.08207648992538452,,
+29,The man was shown her jacket by a woman. Was the jacket the man's or the woman's? ,True,,,0.22197411954402924,0.3374086916446686
+30,His jacket was shown by the man to the woman. Who owned the jacket?,True,0.2729756832122803,0.07191918790340424,,

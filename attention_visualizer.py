@@ -99,7 +99,7 @@ class AttentionVisualizer:
         # Tokenize inputs
         inputs = self.tokenizer(
             self.prompts,
-            padding=True,
+            padding=True,#this is where the padding is included; used for sequences so that they all have the same length
             return_tensors="pt",
             return_attention_mask=True
         )
@@ -342,16 +342,30 @@ class AttentionVisualizer:
 
     def _submit_layeridx(self, text):
         """ Handle when user inputs a new layer index """
-        if not self.safe_tamper_flag and len(self.interesting_attns) != 0:
-            print("Error: do not directly change the attention head field and layer field while in a demo. ")
-            print("If you would like to explore the heads on your own, please run attention_visualizer.py." 
-                  "Check usages by running python attention_visualizer.py")
-            plt.close()
-            exit(1)
+        #if not self.safe_tamper_flag and len(self.interesting_attns) != 0:
+            #print("Error: do not directly change the attention head field and layer field while in a demo. ")
+            #print("If you would like to explore the heads on your own, please run attention_visualizer.py." 
+                  #"Check usages by running python attention_visualizer.py")
+            #plt.close()
+            #exit(1)
+        # if the text is not a digit, then the number is reverted back to the layer it was before
+        old_layer_idx = self.cur_layer_idx  # store previous layer
         if not text.isdigit():
-            print("Error: You entered an invalid layer number. Program exit")
-            plt.close()
-            exit(1)
+            print(f"Warning: Invalid layer number '{text}'. Reverting to previous layer {old_layer_idx}.")
+            self.safe_tamper_flag = True
+            self.layer_textbox.set_val(str(old_layer_idx))
+            return
+        #if the number inputted is a negative or beyond the amount of layers that we have, then the old layer is again put back in place
+        new_layer_idx = int(text)
+        if new_layer_idx < 0 or new_layer_idx >= self.total_num_layers:
+            print(f"Warning: Layer {new_layer_idx} is out of range. Reverting to previous layer {old_layer_idx}.")
+            self.safe_tamper_flag = True
+            self.layer_textbox.set_val(str(old_layer_idx))
+            return
+        #if not text.isdigit():
+            #print("Error: You entered an invalid layer number. Program exit")
+            #plt.close()
+            #exit(1)
         self.cur_layer_idx = int(text)
         self._plot_attention_head(self.cur_head_idx, self.cur_layer_idx)
         self.range_slider.reset()
@@ -359,16 +373,29 @@ class AttentionVisualizer:
 
     def _submit_headidx(self, text):
         """ Handle when user inputs a new head index """
-        if not self.safe_tamper_flag and len(self.interesting_attns) != 0:
-            print("Error: do not directly change the attention head field and layer field while in a demo. ")
-            print("If you would like to explore the heads on your own, please run attention_visualizer.py.\n" 
-                  "Check usages by running python attention_visualizer.py")
-            plt.close()
-            exit(1)
+        #if not self.safe_tamper_flag and len(self.interesting_attns) != 0:
+            #print("Error: do not directly change the attention head field and layer field while in a demo. ")
+            #print("If you would like to explore the heads on your own, please run attention_visualizer.py.\n" 
+                  #"Check usages by running python attention_visualizer.py")
+            #plt.close()
+            #exit(1)
+        old_head_idx = self.cur_head_idx  # store previous head
         if not text.isdigit():
-            print("Error: You entered an invalid layer number. Program exit")
-            plt.close()
-            exit(1)
+            print(f"Warning: Invalid head number '{text}'. Reverting to previous head {old_head_idx}.")
+            self.safe_tamper_flag = True
+            self.head_textbox.set_val(str(old_head_idx))
+            return
+
+        new_head_idx = int(text)
+        if new_head_idx < 0 or new_head_idx >= self.num_heads_per_layer:
+            print(f"Warning: Head {new_head_idx} is out of range. Reverting to previous head {old_head_idx}.")
+            self.safe_tamper_flag = True
+            self.head_textbox.set_val(str(old_head_idx))
+            return
+        #if not text.isdigit():
+            #print("Error: You entered an invalid layer number. Program exit")
+            #plt.close()
+            #exit(1)
         self.cur_head_idx = int(text)
         self._plot_attention_head(self.cur_head_idx, self.cur_layer_idx)
         self.range_slider.reset()
@@ -594,10 +621,19 @@ class AttentionVisualizer:
         self.fig.canvas.draw_idle()
         
     def _next_attention_head(self, event):
-        """Move to next attention head."""
-        if len(self.interesting_attns) == 0:
-            # base attention visualizations
-            if event.key == 'right' or event.key == 'up':
+        """Move between attention heads and layers.
+
+        - Left/right arrows: navigate 'interesting' heads (demo mode) or all heads (base mode)
+        - Up/down arrows: always navigate through every layer/head combination
+        - 'q': quit
+        """
+        if event.inaxes in [self.layer_textbox_ax, self.head_textbox_ax]:
+            return
+
+        # UP/DOWN: always full traversal through all heads/layers
+        if event.key in ['up', 'down']:
+            if event.key == 'up':
+                # move forward through all heads/layers
                 if self.cur_layer_idx == self.total_num_layers - 1 and self.cur_head_idx == self.num_heads_per_layer - 1:
                     self.cur_layer_idx = 0
                     self.cur_head_idx = 0
@@ -606,11 +642,8 @@ class AttentionVisualizer:
                     self.cur_layer_idx += 1
                 else:
                     self.cur_head_idx += 1
-                self.safe_tamper_flag = True
-                self.layer_textbox.set_val(str(self.cur_layer_idx))
-                self.safe_tamper_flag = True
-                self.head_textbox.set_val(str(self.cur_head_idx))
-            elif event.key == 'left' or event.key == 'down':
+            elif event.key == 'down':
+                # move backward through all heads/layers
                 if self.cur_layer_idx == 0 and self.cur_head_idx == 0:
                     self.cur_layer_idx = self.total_num_layers - 1
                     self.cur_head_idx = self.num_heads_per_layer - 1
@@ -619,34 +652,56 @@ class AttentionVisualizer:
                     self.cur_layer_idx -= 1
                 else:
                     self.cur_head_idx -= 1
-                self.safe_tamper_flag = True
-                self.layer_textbox.set_val(str(self.cur_layer_idx))
-                self.safe_tamper_flag = True
-                self.head_textbox.set_val(str(self.cur_head_idx))
-            elif event.key == 'q':
-                print("Exited from the demonstration.")
-                plt.close(self.fig)
-                return
-        else:
-            # we are currently in another demo, set the next attn head to the next in the list
-            # of interesting attentions
-            if event.key == 'right' or event.key == 'up':
-                self.cur_overall_idx += 1
-                if self.cur_overall_idx >= len(self.interesting_attns):
-                    self.cur_overall_idx = 0
-            elif event.key == 'left' or event.key == 'down':
-                self.cur_overall_idx -= 1
-                if self.cur_overall_idx < 0:
-                    self.cur_overall_idx = len(self.interesting_attns) - 1
-            elif event.key == 'q':
-                print("Exited from the demonstration.")
-                plt.close(self.fig)
-                return
-            self.cur_layer_idx, self.cur_head_idx = self.interesting_attns[self.cur_overall_idx]
+
             self.safe_tamper_flag = True
             self.layer_textbox.set_val(str(self.cur_layer_idx))
             self.safe_tamper_flag = True
             self.head_textbox.set_val(str(self.cur_head_idx))
+            return
+
+        # LEFT/RIGHT: demo behavior (interesting heads) or all if base mode
+        if len(self.interesting_attns) == 0:
+            # base mode — left/right also scroll through all heads/layers
+            if event.key == 'right':
+                if self.cur_layer_idx == self.total_num_layers - 1 and self.cur_head_idx == self.num_heads_per_layer - 1:
+                    self.cur_layer_idx = 0
+                    self.cur_head_idx = 0
+                elif self.cur_head_idx == self.num_heads_per_layer - 1:
+                    self.cur_head_idx = 0
+                    self.cur_layer_idx += 1
+                else:
+                    self.cur_head_idx += 1
+            elif event.key == 'left':
+                if self.cur_layer_idx == 0 and self.cur_head_idx == 0:
+                    self.cur_layer_idx = self.total_num_layers - 1
+                    self.cur_head_idx = self.num_heads_per_layer - 1
+                elif self.cur_head_idx == 0:
+                    self.cur_head_idx = self.num_heads_per_layer - 1
+                    self.cur_layer_idx -= 1
+                else:
+                    self.cur_head_idx -= 1
+        else:
+            # demo mode — left/right scroll through only interesting heads
+            if event.key == 'right':
+                self.cur_overall_idx = (self.cur_overall_idx + 1) % len(self.interesting_attns)
+            elif event.key == 'left':
+                self.cur_overall_idx = (self.cur_overall_idx - 1) % len(self.interesting_attns)
+            else:
+                return
+            self.cur_layer_idx, self.cur_head_idx = self.interesting_attns[self.cur_overall_idx]
+
+        # Quit option
+        if event.key == 'q':
+            print("Exited from the demonstration.")
+            plt.close(self.fig)
+            return
+
+        # Update UI
+        self.safe_tamper_flag = True
+        self.layer_textbox.set_val(str(self.cur_layer_idx))
+        self.safe_tamper_flag = True
+        self.head_textbox.set_val(str(self.cur_head_idx))
+
         
     def visualize(self):
         """Create and display the attention visualization."""
@@ -707,4 +762,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main() 
+    main()  

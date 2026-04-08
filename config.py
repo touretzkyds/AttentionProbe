@@ -18,8 +18,14 @@ DEMO_CONFIGS = {
                                 "Example prompt: The man showed the woman his jacket. Who owned the jacket, the man or the woman? \n"
                                 "To use the example prompt as your prompt, type 0 and hit enter when you are asked to input your prompt. "
                                "\n\n",
-        "keywords": ["his", "her"],
-        "max_keyword_count": 1,
+        "keywords": ["him", "her", "his", "hers"],
+        "PRONOUN_MAP" : {
+            "him": "her",
+            "her": "his",
+            "his": "her",
+            "hers": "his"  
+        },   
+        "max_keyword_count": 5,
         "auto_generate_prompt2": True,
         "need_prompt2": True,
         "default_prompt1": "The man showed the woman his jacket. Who owned the jacket, the man or the woman?",

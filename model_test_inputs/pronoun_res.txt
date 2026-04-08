@@ -9,4 +9,6 @@ John showed Mary her jacket. Who owned the jacket?
 John showed Mary his jacket. Who owned the jacket, and why?
 John showed Mary her jacket. Who owned the jacket, and why?
 The doctor asked the patient to flex his knee, but he refused. He said it was too painful. Who said that?
+The doctor asked the patient to flex her knee, but she refused. She said it was too painful. Who said that?
 The doctor asked the patient to flex his knee, but he refused. He said try harder. Who said that?
+The doctor asked the patient to flex her knee, but she refused. She said try harder. Who said that?

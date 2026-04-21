@@ -2,3 +2,5 @@ torch>=1.9.0
 transformers>=4.20.0
 matplotlib>=3.5.0
 numpy>=1.21.0 
+sentencepiece>=0.2.1
+protobuf>=6.32.1

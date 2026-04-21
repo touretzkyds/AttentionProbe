@@ -8,6 +8,7 @@ from demo_base import BaseDemo
 
 def main():
     """Run Demo 1: Pronoun Resolution."""
+    global demo
     demo = BaseDemo("pronoun_resolution")
     demo.run()
 

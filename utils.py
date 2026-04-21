@@ -28,7 +28,7 @@ def find_difference(tokens1: List[str], tokens2: List[str]) -> int:
     return -1
 
 
-def validate_sentence(sentence: str, required_keywords: List[str], max_count: int) -> bool:
+#def validate_sentence(sentence: str, required_keywords: List[str], max_count: int) -> bool:
     """
     Validate that a sentence contains exactly one of the required keywords.
     
@@ -40,25 +40,54 @@ def validate_sentence(sentence: str, required_keywords: List[str], max_count: in
     Returns:
         True if sentence is valid, False otherwise
     """
-    sentence_lower = sentence.lower()
-    words = re.findall(r'\b\w+\b', sentence_lower)
+    #sentence_lower = sentence.lower()
+    #words = re.findall(r'\b\w+\b', sentence_lower)
     
     # Check if any required keyword is present
-    found_keywords = [keyword for keyword in required_keywords if keyword in words]
+    #found_keywords = [keyword for keyword in required_keywords if keyword in words]
     
-    if not found_keywords:
-        return False
+    #if not found_keywords:
+        #return False
 
     # Only one of the keywords should be in a sentence
-    if len(found_keywords) > 1:
-        return False
+    #if len(found_keywords) > 1:
+        #return False
     
     # Check that no more than max_count keywords are present
-    if max_count > 0:
-        total_count = sum(words.count(keyword) for keyword in required_keywords)
-    else: # max_count must be -1, which means unlimited keywords are allowed (ex: for noun phrases)
-        return True
-    return total_count <= max_count
+    #if max_count > 0:
+        #total_count = sum(words.count(keyword) for keyword in required_keywords)
+    #else: # max_count must be -1, which means unlimited keywords are allowed (ex: for noun phrases)
+        #return True
+    #return total_count <= max_count
+
+def validate_sentence(sentence: str, required_keywords: List[str], max_count: int) -> bool:
+    """
+    Validate that a sentence contains exactly one occurrence of one of the required keywords.
+
+    Args:
+        sentence: Input sentence to validate
+        required_keywords: List of keywords that should be present
+        max_count: Maximum number of keyword occurrences allowed (use 1 for pronouns)
+
+    Returns:
+        True if sentence is valid, False otherwise
+    """
+    sentence_lower = sentence.lower()
+    words = re.findall(r'\b\w+\b', sentence_lower)
+
+    # Count total occurrences of all required keywords
+    total_count = sum(words.count(keyword) for keyword in required_keywords)
+
+    # Must contain exactly one occurrence if max_count is 1
+    if max_count == 1:
+        if total_count != 1:
+            return False
+    elif max_count > 1:
+        if total_count > max_count:
+            return False
+    # max_count == -1 -> unlimited keywords are allowed (ex: for noun phrases)
+    return True
+
 
 def is_float(s):
     try:
@@ -75,7 +104,7 @@ def is_int(s):
     except ValueError:
         return False
 
-def generate_contrast_prompt(original_prompt: str, keywords: List[str], auto_generate: bool) -> str:
+def generate_contrast_prompt(original_prompt: str, keywords: List[str], auto_generate: bool, pronoun_map: dict) -> str:
     """
     Generate a contrasting prompt by replacing one pronoun with another.
     
@@ -88,13 +117,16 @@ def generate_contrast_prompt(original_prompt: str, keywords: List[str], auto_gen
     """
     if auto_generate:
         words = re.findall(r'\b\w+\b|\W+', original_prompt)
-
-        found_keyword = next((p for p in keywords if p.lower() in [w.lower() for w in words]), None)
+    
+    # find the first keyword in the sentence that exists in pronoun_map
+        found_keyword = next((w for w in pronoun_map if w.lower() in [word.lower() for word in words]), None)
         if not found_keyword:
-            raise ValueError(f"No keyword from {keywords} found in prompt")
-
-        other_keyword = keywords[1] if found_keyword == keywords[0] else keywords[0]
-
+            raise ValueError(f"No keyword from {list(pronoun_map.keys())} found in prompt")
+    
+    # get the mapped opposite pronoun
+        other_keyword = pronoun_map[found_keyword]
+    
+    # replace first occurrence
         for i, cur in enumerate(words):
             if re.fullmatch(r'\w+', cur) and cur.lower() == found_keyword.lower():
                 words[i] = other_keyword
@@ -102,8 +134,8 @@ def generate_contrast_prompt(original_prompt: str, keywords: List[str], auto_gen
 
         return ''.join(words)
     else:
-        # handle within the demo
         return ""
+
 
 
 class ModelManager:
@@ -119,7 +151,9 @@ class ModelManager:
     def load_model(self):
         """Load the T5 model and tokenizer."""
         if self.tokenizer is None:
-            self.tokenizer = T5Tokenizer.from_pretrained(self.model_name)
+            self.tokenizer = T5Tokenizer.from_pretrained(self.model_name, legacy = False)
+            print("tokenizer = ", repr(self.tokenizer)[0:80])
+            #print("tokenizer = ", repr(self.tokenizer))
         if self.model is None:
             self.model = T5ForConditionalGeneration.from_pretrained(self.model_name).to(self.device)
         if self.config is None:

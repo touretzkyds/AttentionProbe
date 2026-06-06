@@ -727,6 +727,13 @@ class AttentionVisualizer:
         
         # plt.tight_layout()
         plt.show()
+    def save_visualization(self, output_path, layer_idx, head_idx):
+        self.fig, self.axs = plt.subplots(2, 3, figsize=UI_CONFIG['figure_size'])#creating the matplotlib window
+
+        self._plot_attention_head(head_idx, layer_idx)#plot the attention matrix based on specificities
+
+        plt.savefig(output_path, bbox_inches='tight')#saving the file to a specific path, making it clean
+        plt.close(self.fig)#closes the figure
 
 
 def main():

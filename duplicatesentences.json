@@ -1,0 +1,352 @@
+[
+    {
+      "id": 0,
+      "sentence": "Mary asked John to join the meeting, and Mary prepared notes while he waited.",
+      "control_sentence": "Mary asked John to join the meeting, and Peter prepared notes while he waited.",
+      "probe_name": "Mary",
+      "control_name": "Peter"
+    },
+    {
+      "id": 1,
+      "sentence": "John told Peter to review the document, and John checked it again before submitting.",
+      "control_sentence": "John told Peter to review the document, and Mary checked it again before submitting.",
+      "probe_name": "John",
+      "control_name": "Mary"
+    },
+    {
+      "id": 2,
+      "sentence": "Peter called John to confirm the plan, and Peter wrote it down before leaving.",
+      "control_sentence": "Peter called John to confirm the plan, and Sally wrote it down before leaving.",
+      "probe_name": "Peter",
+      "control_name": "Sally"
+    },
+    {
+      "id": 3,
+      "sentence": "Mary emailed John about the project, and Mary updated the file when she noticed errors.",
+      "control_sentence": "Mary emailed John about the project, and Sally updated the file when she noticed errors.",
+      "probe_name": "Mary",
+      "control_name": "Sally"
+    },
+    {
+      "id": 4,
+      "sentence": "Sally told Peter to bring the documents, and Sally organized them before the meeting started.",
+      "control_sentence": "Sally told Peter to bring the documents, and John organized them before the meeting started.",
+      "probe_name": "Sally",
+      "control_name": "John"
+    },
+    {
+      "id": 5,
+      "sentence": "John asked Peter to check the results, and John reviewed them carefully before responding.",
+      "control_sentence": "John asked Peter to check the results, and Mary reviewed them carefully before responding.",
+      "probe_name": "John",
+      "control_name": "Mary"
+    },
+    {
+      "id": 6,
+      "sentence": "John called Mary about the schedule, and John adjusted it after seeing the conflict.",
+      "control_sentence": "John called Mary about the schedule, and Peter adjusted it after seeing the conflict.",
+      "probe_name": "John",
+      "control_name": "Peter"
+    },
+    {
+      "id": 7,
+      "sentence": "Mary reminded John to send the report, and Mary submitted it before the deadline passed.",
+      "control_sentence": "Mary reminded John to send the report, and Peter submitted it before the deadline passed.",
+      "probe_name": "Mary",
+      "control_name": "Peter"
+    },
+    {
+      "id": 8,
+      "sentence": "John warned Peter about the delay, and John changed plans after hearing the news.",
+      "control_sentence": "John warned Peter about the delay, and Mary changed plans after hearing the news.",
+      "probe_name": "John",
+      "control_name": "Mary"
+    },
+    {
+      "id": 9,
+      "sentence": "Mary emailed John to confirm attendance, and Mary replied after checking her calendar.",
+      "control_sentence": "Mary emailed John to confirm attendance, and Sally replied after checking her calendar.",
+      "probe_name": "Mary",
+      "control_name": "Sally"
+    },
+    {
+      "id": 10,
+      "sentence": "Sally called John to discuss the issue, and Sally resolved it after reviewing the data.",
+      "control_sentence": "Sally called John to discuss the issue, and Mary resolved it after reviewing the data.",
+      "probe_name": "Sally",
+      "control_name": "Mary"
+    },
+    {
+      "id": 11,
+      "sentence": "John reminded Mary to submit the form, and John signed it before the deadline.",
+      "control_sentence": "John reminded Mary to submit the form, and Peter signed it before the deadline.",
+      "probe_name": "John",
+      "control_name": "Peter"
+    },
+    {
+      "id": 12,
+      "sentence": "John told Peter to finish the report, and John reviewed it carefully before submitting it.",
+      "control_sentence": "John told Peter to finish the report, and Sally reviewed it carefully before submitting it.",
+      "probe_name": "John",
+      "control_name": "Sally"
+    },
+    {
+      "id": 13,
+      "sentence": "John asked Mary to join the discussion, and John prepared notes while waiting for the response.",
+      "control_sentence": "John asked Mary to join the discussion, and Peter prepared notes while waiting for the response.",
+      "probe_name": "John",
+      "control_name": "Peter"
+    },
+    {
+      "id": 14,
+      "sentence": "Peter called John to confirm the schedule, and Peter wrote it down before leaving the room.",
+      "control_sentence": "Peter called John to confirm the schedule, and Mary wrote it down before leaving the room.",
+      "probe_name": "Peter",
+      "control_name": "Mary"
+    },
+    {
+      "id": 15,
+      "sentence": "Peter reminded John to check the results, and Peter organized the files before the meeting.",
+      "control_sentence": "Peter reminded John to check the results, and Mary organized the files before the meeting.",
+      "probe_name": "Peter",
+      "control_name": "Mary"
+    },
+    {
+      "id": 16,
+      "sentence": "John emailed Mary to update the document, and John corrected it after finding an error.",
+      "control_sentence": "John emailed Mary to update the document, and Peter corrected it after finding an error.",
+      "probe_name": "John",
+      "control_name": "Peter"
+    },
+    {
+      "id": 17,
+      "sentence": "John told Sally to review the plan, and John waited while the changes were being made.",
+      "control_sentence": "John told Sally to review the plan, and Mary waited while the changes were being made.",
+      "probe_name": "John",
+      "control_name": "Mary"
+    },
+    {
+      "id": 18,
+      "sentence": "Mary asked Sally to send the message, and Mary prepared the draft before sending it.",
+      "control_sentence": "Mary asked Sally to send the message, and Peter prepared the draft before sending it.",
+      "probe_name": "Mary",
+      "control_name": "Peter"
+    },
+    {
+      "id": 19,
+      "sentence": "Mary called Peter to confirm details, and Mary updated her notes afterward.",
+      "control_sentence": "Mary called Peter to confirm details, and Sally updated her notes afterward.",
+      "probe_name": "Mary",
+      "control_name": "Sally"
+    },
+    {
+      "id": 20,
+      "sentence": "Mary told Peter to check the data, and Mary verified it before reporting back.",
+      "control_sentence": "Mary told Peter to check the data, and John verified it before reporting back.",
+      "probe_name": "Mary",
+      "control_name": "John"
+    },
+    {
+      "id": 21,
+      "sentence": "Mary reminded Peter to attend, and Mary prepared the agenda while waiting.",
+      "control_sentence": "Mary reminded Peter to attend, and John prepared the agenda while waiting.",
+      "probe_name": "Mary",
+      "control_name": "John"
+    },
+    {
+      "id": 22,
+      "sentence": "Peter emailed Sally to confirm attendance, and Peter checked his calendar before replying.",
+      "control_sentence": "Peter emailed Sally to confirm attendance, and John checked his calendar before replying.",
+      "probe_name": "Peter",
+      "control_name": "John"
+    },
+    {
+      "id": 23,
+      "sentence": "Peter asked Mary to review the file, and Peter organized his notes carefully.",
+      "control_sentence": "Peter asked Mary to review the file, and John organized his notes carefully.",
+      "probe_name": "Peter",
+      "control_name": "John"
+    },
+    {
+      "id": 24,
+      "sentence": "Peter told Sally to fix the issue, and Peter tested the solution before submitting it.",
+      "control_sentence": "Peter told Sally to fix the issue, and Mary tested the solution before submitting it.",
+      "probe_name": "Peter",
+      "control_name": "Mary"
+    },
+    {
+      "id": 25,
+      "sentence": "Peter called John to discuss the plan, and Peter wrote down the feedback.",
+      "control_sentence": "Peter called John to discuss the plan, and Mary wrote down the feedback.",
+      "probe_name": "Peter",
+      "control_name": "Mary"
+    },
+    {
+      "id": 26,
+      "sentence": "Sally asked Mary to prepare the slides, and Sally finalized them before the presentation.",
+      "control_sentence": "Sally asked Mary to prepare the slides, and John finalized them before the presentation.",
+      "probe_name": "Sally",
+      "control_name": "John"
+    },
+    {
+      "id": 27,
+      "sentence": "Sally reminded Mary to bring the documents, and Sally reviewed the checklist.",
+      "control_sentence": "Sally reminded Mary to bring the documents, and John reviewed the checklist.",
+      "probe_name": "Sally",
+      "control_name": "John"
+    },
+    {
+      "id": 28,
+      "sentence": "Mary told John to update the report, and Mary corrected it before sending.",
+      "control_sentence": "Mary told John to update the report, and Sally corrected it before sending.",
+      "probe_name": "Mary",
+      "control_name": "Sally"
+    },
+    {
+      "id": 29,
+      "sentence": "Mary asked Peter to join the meeting, and Mary prepared notes while waiting.",
+      "control_sentence": "Mary asked Peter to join the meeting, and John prepared notes while waiting.",
+      "probe_name": "Mary",
+      "control_name": "John"
+    },
+    {
+      "id": 30,
+      "sentence": "John called Peter to confirm the task, and John completed it before the deadline.",
+      "control_sentence": "John called Peter to confirm the task, and Mary completed it before the deadline.",
+      "probe_name": "John",
+      "control_name": "Mary"
+    },
+    {
+      "id": 31,
+      "sentence": "John reminded Sally to review the data, and John adjusted the timeline.",
+      "control_sentence": "John reminded Sally to review the data, and Mary adjusted the timeline.",
+      "probe_name": "John",
+      "control_name": "Mary"
+    },
+    {
+      "id": 32,
+      "sentence": "Peter told Sally to submit the form, and Peter signed it before leaving.",
+      "control_sentence": "Peter told Sally to submit the form, and John signed it before leaving.",
+      "probe_name": "Peter",
+      "control_name": "John"
+    },
+    {
+      "id": 33,
+      "sentence": "Peter asked John to check the results, and Peter waited for confirmation.",
+      "control_sentence": "Peter asked John to check the results, and Mary waited for confirmation.",
+      "probe_name": "Peter",
+      "control_name": "Mary"
+    },
+    {
+      "id": 34,
+      "sentence": "Sally emailed John to send the update, and Sally corrected the message before sending it.",
+      "control_sentence": "Sally emailed John to send the update, and Mary corrected the message before sending it.",
+      "probe_name": "Sally",
+      "control_name": "Mary"
+    },
+    {
+      "id": 35,
+      "sentence": "Sally called Peter to confirm details, and Sally prepared the report.",
+      "control_sentence": "Sally called Peter to confirm details, and Mary prepared the report.",
+      "probe_name": "Sally",
+      "control_name": "Mary"
+    },
+    {
+      "id": 36,
+      "sentence": "John told Peter to review the plan, and John finalized it before approval.",
+      "control_sentence": "John told Peter to review the plan, and Sally finalized it before approval.",
+      "probe_name": "John",
+      "control_name": "Sally"
+    },
+    {
+      "id": 37,
+      "sentence": "John asked Mary to attend the session, and John organized the materials.",
+      "control_sentence": "John asked Mary to attend the session, and Peter organized the materials.",
+      "probe_name": "John",
+      "control_name": "Peter"
+    },
+    {
+      "id": 38,
+      "sentence": "Peter reminded Mary to check the schedule, and Peter updated the calendar.",
+      "control_sentence": "Peter reminded Mary to check the schedule, and Sally updated the calendar.",
+      "probe_name": "Peter",
+      "control_name": "Sally"
+    },
+    {
+      "id": 39,
+      "sentence": "Peter called John to discuss the issue, and Peter wrote down the changes.",
+      "control_sentence": "Peter called John to discuss the issue, and Sally wrote down the changes.",
+      "probe_name": "Peter",
+      "control_name": "Sally"
+    },
+    {
+      "id": 40,
+      "sentence": "Mary told John to prepare the notes, and Mary completed them before the meeting.",
+      "control_sentence": "Mary told John to prepare the notes, and Peter completed them before the meeting.",
+      "probe_name": "Mary",
+      "control_name": "Peter"
+    },
+    {
+      "id": 41,
+      "sentence": "Mary asked Sally to review the file, and Mary checked the final version.",
+      "control_sentence": "Mary asked Sally to review the file, and Peter checked the final version.",
+      "probe_name": "Mary",
+      "control_name": "Peter"
+    },
+    {
+      "id": 42,
+      "sentence": "John emailed Sally to confirm the report, and John revised it before submission.",
+      "control_sentence": "John emailed Sally to confirm the report, and Sally revised it before submission.",
+      "probe_name": "John",
+      "control_name": "Sally"
+    },
+    {
+      "id": 43,
+      "sentence": "John called Peter to discuss the results, and John documented the response.",
+      "control_sentence": "John called Peter to discuss the results, and Mary documented the response.",
+      "probe_name": "John",
+      "control_name": "Mary"
+    },
+    {
+      "id": 44,
+      "sentence": "Sally told Peter to update the data, and Sally corrected it after review.",
+      "control_sentence": "Sally told Peter to update the data, and John corrected it after review.",
+      "probe_name": "Sally",
+      "control_name": "John"
+    },
+    {
+      "id": 45,
+      "sentence": "Sally asked John to join the meeting, and Sally prepared the agenda.",
+      "control_sentence": "Sally asked John to join the meeting, and Peter prepared the agenda.",
+      "probe_name": "Sally",
+      "control_name": "Peter"
+    },
+    {
+      "id": 46,
+      "sentence": "Peter reminded John to send the file, and Peter submitted it on time.",
+      "control_sentence": "Peter reminded John to send the file, and Mary submitted it on time.",
+      "probe_name": "Peter",
+      "control_name": "Mary"
+    },
+    {
+      "id": 47,
+      "sentence": "Peter called John to confirm details, and Peter organized the information.",
+      "control_sentence": "Peter called John to confirm details, and Sally organized the information.",
+      "probe_name": "Peter",
+      "control_name": "Sally"
+    },
+    {
+      "id": 48,
+      "sentence": "John told Peter to check the results, and John verified them before reporting.",
+      "control_sentence": "John told Peter to check the results, and Sally verified them before reporting.",
+      "probe_name": "John",
+      "control_name": "Sally"
+    },
+    {
+      "id": 49,
+      "sentence": "John asked Peter to review the document, and John prepared the summary.",
+      "control_sentence": "John asked Peter to review the document, and Mary prepared the summary.",
+      "probe_name": "John",
+      "control_name": "Mary"
+    }
+  ]

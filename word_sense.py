@@ -335,8 +335,10 @@ def render_flowchart(word_label, m1_label, m2_label, mat_self, mat_m1, mat_m2, t
             (0.55, 0.55), (0.68, 0.46), transform=fig.transFigure,
             connectionstyle="arc3,rad=0.15", **arrow_props))
 
-    fig.suptitle(title, fontsize=13, fontweight="bold", y=0.99)
-    fig.tight_layout(rect=[0, 0, 1, 0.96])
+    fig.suptitle(title, fontsize=13, fontweight="bold", y=0.98)
+    
+    # Clean padding adjustment (replaces tight_layout to prevent UserWarnings)
+    fig.subplots_adjust(top=0.93, bottom=0.08, left=0.08, right=0.92)
 
     buf = BytesIO()
     fig.savefig(buf, format="png", dpi=180, bbox_inches="tight")
@@ -462,7 +464,7 @@ if go and word.strip():
         st.subheader("Flowcharts & Line Plots")
         fc1, fc2 = st.columns(2)
         with fc1:
-            st.image(img1, caption="Context 1 Flowchart", use_container_width=True)
+            st.image(img1, caption="Context 1 Flowchart", width="stretch")
             st.download_button(
                 label="📥 Download Flowchart 1",
                 data=img1,
@@ -470,7 +472,7 @@ if go and word.strip():
                 mime="image/png"
             )
             
-            st.image(lp1, caption="Context 1 Layer-wise Cosine Similarity", use_container_width=True)
+            st.image(lp1, caption="Context 1 Layer-wise Cosine Similarity", width="stretch")
             st.download_button(
                 label="📥 Download Line Plot 1",
                 data=lp1,
@@ -479,7 +481,7 @@ if go and word.strip():
             )
 
         with fc2:
-            st.image(img2, caption="Context 2 Flowchart", use_container_width=True)
+            st.image(img2, caption="Context 2 Flowchart", width="stretch")
             st.download_button(
                 label="📥 Download Flowchart 2",
                 data=img2,
@@ -487,7 +489,7 @@ if go and word.strip():
                 mime="image/png"
             )
             
-            st.image(lp2, caption="Context 2 Layer-wise Cosine Similarity", use_container_width=True)
+            st.image(lp2, caption="Context 2 Layer-wise Cosine Similarity", width="stretch")
             st.download_button(
                 label="📥 Download Line Plot 2",
                 data=lp2,

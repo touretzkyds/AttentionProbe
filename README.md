@@ -79,4 +79,10 @@ python extract_embeddings.py
 ```
 
 ### How to get an Open AI API key
-
+1. Go to https://openai.com/index/openai-api/
+2. Click Log in and then click on API key
+3. You would be redirected to OpenAI's dashboard where on the side panel, click on "API keys"
+4. Click on "+ Create a new secret key"
+5. Name the project and adjust the privacy settings
+6. Hit Copy and then paste it in the side panel of the Word sense demo which says "Configuration"
+7. Hit Enter and you're all set!

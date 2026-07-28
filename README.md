@@ -77,3 +77,6 @@ For more detailed usage information, run
 ```bash
 python extract_embeddings.py
 ```
+
+### How to get an Open AI API key
+

@@ -11,7 +11,7 @@ model.
 ---
 
 ## Features
-AttentionProbe encompasses 4 **interactive demonstrations** that feature attention heads performing **pronoun resolution, number agreement, noun phrase identification,
+AttentionProbe encompasses 5 **interactive demonstrations** that feature attention heads performing **pronoun resolution, number agreement, noun phrase identification,
 and prepositional phrase attachment**. These demos allow you to input a prompt (or pair of prompts) in order to see the attention head in action. 
 
 Along with the tailored demos, AttentionProbe also allows for independent exploration using its **base visualization** functionality. The base visualization supports 
@@ -42,15 +42,34 @@ pip install -r requirements.txt
 
 ### 3. Run the desired tool
 The four attention head demos are contained in ```demo_pronoun_res.py```, ```demo_number_agreement.py```, ```demo_noun_phrase.py```, and ```demo_prep_phrase_attach.py```
-To run the demo,
+To run the Pronoun Resolution demo,
 ```bash
 python demo_pronoun_res.py
+```
+
+To run the Number Agreement demo,
+```bash
+python demo_number_agreement.py
+```
+
+To run the Noun Phrase Identification demo,
+```bash
+python demo_noun_phrase.py
+```
+
+To run the Prepositional Phrase Attachment demo,
+```bash
+python demo_prep_phrase_attach.py
 ```
 
 The base visualization is contained in ```attention_visualizer.py```
 For more detailed usage information, run
 ```bash
 python attention_visualizer.py
+```
+To run the Word Sense demo, you would require an Open AI API key, after getting one run,
+```bash
+streamlit run word_sense.py
 ```
 
 The embedding visualizations are contained in ```extract_embeddings.py```
